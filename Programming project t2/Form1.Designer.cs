@@ -34,7 +34,7 @@ namespace Programming_project_t2
             this.buttondown = new System.Windows.Forms.Button();
             this.buttonleft = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -148,6 +148,7 @@ namespace Programming_project_t2
             this.buttonup.TabIndex = 0;
             this.buttonup.Text = "p";
             this.buttonup.UseVisualStyleBackColor = true;
+            this.buttonup.Click += new System.EventHandler(this.buttonup_Click);
             // 
             // buttonright
             // 
@@ -193,15 +194,23 @@ namespace Programming_project_t2
             this.groupBox1.Text = "Controls to move";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // comboBox1
+            // comboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Green"});
-            this.comboBox1.Location = new System.Drawing.Point(211, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(227, 28);
-            this.comboBox1.TabIndex = 5;
+            this.comboBox.FormattingEnabled = true;
+            this.comboBox.Items.AddRange(new object[] {
+            "Green",
+            "Yellow",
+            "Orange",
+            "Red",
+            "Purple",
+            "Pink",
+            "Brown",
+            "Gray",
+            "Black"});
+            this.comboBox.Location = new System.Drawing.Point(211, 56);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(227, 28);
+            this.comboBox.TabIndex = 5;
             // 
             // label1
             // 
@@ -672,7 +681,7 @@ namespace Programming_project_t2
             this.ClientSize = new System.Drawing.Size(1178, 594);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "GridLock";
@@ -740,7 +749,7 @@ namespace Programming_project_t2
         private System.Windows.Forms.Button buttondown;
         private System.Windows.Forms.Button buttonleft;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;

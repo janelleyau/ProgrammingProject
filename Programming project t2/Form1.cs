@@ -51,7 +51,64 @@ namespace Programming_project_t2
             
 
         }
-            private void pictureBox2_Click(object sender, EventArgs e)
+
+        private void buttonup_Click(object sender, EventArgs e)
+        {
+            if (comboBox.Text == "Green")
+            {
+                moveup(this, e, "Green");
+            }
+            else if (comboBox.Text == "Yellow")
+            {
+                moveup(this, e, "Yellow");
+            }
+            else if (comboBox.Text == "Orange")
+            {
+                moveup(this, e, "Orange");
+            }
+            else if (comboBox.Text == "Purple")
+            {
+                moveup(this, e, "Purple");
+            }
+            else if (comboBox.Text == "Gray")
+            {
+                moveup(this, e, "Gray");
+            }
+            else
+            {
+                MessageBox.Show("Invalid move. Please try again.");
+            }
+        }
+
+        private void moveup(object sender, EventArgs e, string color)
+        {
+            bool movelock = true;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (gameBoard[i, j].BackColor == Color.FromName(comboBox.Text))
+                    {
+                        if (i > 0)
+                        {
+                            if (gameBoard[i - 1, j].BackColor == Color.White)
+                            {
+                                gameBoard[i - 1, j].BackColor = Color.FromName(color);
+                                gameBoard[i, j].BackColor = Color.White;
+                                movelock = false;
+                            }
+                        }
+                    }
+                }
+            }
+            if (movelock == true)
+            {
+                MessageBox.Show("invalid move. Please try again.");
+            }
+        }
+
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
@@ -67,5 +124,7 @@ namespace Programming_project_t2
         {
 
         }
+
+        
     }
 }
