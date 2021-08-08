@@ -24,8 +24,6 @@ namespace Programming_project_t2
            
             string[] puzzleconfigarray = File.ReadAllLines(@"puzzleconfig.csv");
 
-       
-
             int index = 1; 
             for (int i = 0; i < 7; i++)
             {
@@ -101,30 +99,128 @@ namespace Programming_project_t2
                     }
                 }
             }
+
             if (movelock == true)
             {
                 MessageBox.Show("invalid move. Please try again.");
             }
         }
 
-
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void buttondown_Click(object sender, EventArgs e)
         {
-
+            if (comboBox.Text == "Green")
+            {
+                movedown(this, e, "Green");
+            }
+            else if (comboBox.Text == "Yellow")
+            {
+                movedown(this, e, "Yellow");
+            }
+            else if (comboBox.Text == "Orange")
+            {
+                movedown(this, e, "Orange");
+            }
+            else if (comboBox.Text == "Purple")
+            {
+                movedown(this, e, "Purple");
+            }
+            else if (comboBox.Text == "Gray")
+            {
+                movedown(this, e, "Gray");
+            }
+            else
+            {
+                MessageBox.Show("Invalid move. Please try again.");
+            }
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+
+        private void movedown(object sender, EventArgs e, string color)
         {
+            bool movelock = true;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (gameBoard[i, j].BackColor == Color.FromName(comboBox.Text))
+                    {
+                        if (i < 6)
+                        {
+                            if (gameBoard[i + 2, j].BackColor == Color.White)
+                            {
+                                gameBoard[i + 2, j].BackColor = Color.FromName(color);
+                                gameBoard[i , j].BackColor = Color.White;
+                                movelock = false;
+                            }
+                        }
+                    }
+                }
+            }
 
-        }
-
-
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            if (movelock == true)
+            {
+                MessageBox.Show("Invalid move. Please try again.");
+            }
         }
 
         
+        private void buttonleft_Click(object sender, EventArgs e)
+        {
+            
+            if (comboBox.Text == "Green")
+            {
+                moveleft(this, e, "Green");
+            }
+            else if (comboBox.Text == "Red")
+            {
+                moveleft(this, e, "Red");
+            }
+            else if (comboBox.Text == "Brown")
+            {
+                moveleft(this, e, "Brown");
+            }
+            else if (comboBox.Text == "Pink")
+            {
+                moveleft(this, e, "Pink");
+            }
+            else if (comboBox.Text == "Black")
+            {
+                moveleft(this, e, "Black");
+            }
+            else
+            {
+                MessageBox.Show("Invalid move. Please try again.");
+            }
+
+        }
+
+        private void moveleft(object sender, EventArgs e, string color)
+        {
+            bool movelock = true;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (gameBoard[i, j].BackColor == Color.FromName(comboBox.Text))
+                    {
+
+                        if (j > 0)
+                        {
+                            if (gameBoard[i, j - 1].BackColor == Color.White)
+                            {
+                                gameBoard[i, j - 1].BackColor = Color.FromName(color);
+                                gameBoard[i, j].BackColor = Color.White;
+                                movelock = false;
+                            }
+
+                        }
+                    }
+                }
+            }
+            if (movelock == true)
+            {
+                MessageBox.Show("Invalid move. Please try again.");
+            }
+        }
     }
 }
