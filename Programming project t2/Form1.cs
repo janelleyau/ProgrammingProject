@@ -138,7 +138,7 @@ namespace Programming_project_t2
         private void movedown(object sender, EventArgs e, string color)
         {
             bool movelock = true;
-            for (int i = 0; i < 7; i++)
+            for (int i = 6; i > -1; i--)
             {
                 for (int j = 0; j < 7; j++)
                 {
@@ -146,9 +146,9 @@ namespace Programming_project_t2
                     {
                         if (i < 6)
                         {
-                            if (gameBoard[i + 2, j].BackColor == Color.White)
+                            if (gameBoard[i + 1, j].BackColor == Color.White)
                             {
-                                gameBoard[i + 2, j].BackColor = Color.FromName(color);
+                                gameBoard[i + 1, j].BackColor = Color.FromName(color);
                                 gameBoard[i , j].BackColor = Color.White;
                                 movelock = false;
                             }
@@ -213,6 +213,62 @@ namespace Programming_project_t2
                                 movelock = false;
                             }
 
+                        }
+                    }
+                }
+            }
+            if (movelock == true)
+            {
+                MessageBox.Show("Invalid move. Please try again.");
+            }
+        }
+
+        private void buttonright_Click(object sender, EventArgs e)
+        {
+            if (comboBox.Text == "Green")
+            {
+                moveright(this, e, "Green");
+            }
+            else if (comboBox.Text == "Red")
+            {
+                moveright(this, e, "Red");
+            }
+            else if (comboBox.Text == "Brown")
+            {
+                moveright(this, e, "Brown");
+            }
+            else if (comboBox.Text == "Pink")
+            {
+                moveright(this, e, "Pink");
+            }
+            else if (comboBox.Text == "Black")
+            {
+                moveright(this, e, "Black");
+            }
+            else
+            {
+                MessageBox.Show("Invalid move. Please try again.");
+            }
+        }
+
+        private void moveright(object sender, EventArgs e, string color)
+        {
+            bool movelock = true;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (gameBoard[i, j].BackColor == Color.FromName(comboBox.Text))
+                    {
+
+                        if (j < 6)
+                        {
+                            if (gameBoard[i, j + 1].BackColor == Color.White)
+                            {
+                                gameBoard[i, j + 1].BackColor = Color.FromName(color);
+                                gameBoard[i, j].BackColor = Color.White;
+                                movelock = false;
+                            }
                         }
                     }
                 }

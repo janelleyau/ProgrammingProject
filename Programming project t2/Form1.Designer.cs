@@ -159,6 +159,7 @@ namespace Programming_project_t2
             this.buttonright.TabIndex = 1;
             this.buttonright.Text = "u";
             this.buttonright.UseVisualStyleBackColor = true;
+            this.buttonright.Click += new System.EventHandler(this.buttonright_Click);
             // 
             // buttondown
             // 
