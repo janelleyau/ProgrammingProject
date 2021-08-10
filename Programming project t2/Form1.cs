@@ -256,7 +256,7 @@ namespace Programming_project_t2
             bool movelock = true;
             for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 6; j > -1; j--)
                 {
                     if (gameBoard[i, j].BackColor == Color.FromName(comboBox.Text))
                     {
