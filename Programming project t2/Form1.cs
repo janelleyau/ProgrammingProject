@@ -13,7 +13,7 @@ namespace Programming_project_t2
 {
     public partial class Form1 : Form
     {
-        //creates a two-dimensional array 
+        //This creates a two-dimensional array 
         PictureBox[,] gameBoard = new PictureBox[7, 7];
         public Form1()
         {
@@ -22,10 +22,17 @@ namespace Programming_project_t2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //read all the information from the csv file and stores each value into an array (e.g puzzleconfigarray[0] = white)
+            /* This line of code reads all the information from the csv file and stores each value into an array. Each new line represents a 
+            new slot in the array and the code stops when there is a blank line. 
+            e.g puzzleconfigarray[0] = white
+            */
             string[] puzzleconfigarray = File.ReadAllLines(@"puzzleconfig.csv");
 
-            //
+
+            /* The index variable helps in tracking which picturebox is the user up to. The nested loop below loads the current pictureboxes
+            from the windows form and puts it into an array. This makes it easier to continuously loop over and change the state of the picturebox.
+            e.g if the index equals to 5 then it would load picturebox5 into the two dimensional array.
+            */
             int index = 1;
             for (int i = 0; i < 7; i++)
             {
@@ -37,7 +44,7 @@ namespace Programming_project_t2
                 }
             }
 
-
+            //This line of code loops through the whole gameboard and assigns each picturebox with the designated colour. 
             int startingconfigindex = 0;
             for (int i = 0; i < 7; i++)
             {
@@ -49,14 +56,18 @@ namespace Programming_project_t2
                 }
             }
 
-
         }
 
+        /* When the user presses the up button after selecting a colour, the selected colour piece will move up.
+        An if/else statement is used to check if the selected colour can move up and if it can, it runs a subprogram to move the piece. 
+        If the move is not allowed, then a messagebox will pop up stating that it is an invalid move.
+        */
         private void buttonup_Click(object sender, EventArgs e)
         {
             if (comboBox.Text == "Green")
             {
                 greenmoveup(this, e, "Green");
+   
             }
             else if (comboBox.Text == "Yellow")
             {
@@ -80,6 +91,7 @@ namespace Programming_project_t2
             }
         }
 
+        //This is a function specifically made for the green block to move up. 
         private void greenmoveup(object sender, EventArgs e, string color)
         {
             bool movelock = true;
@@ -98,21 +110,24 @@ namespace Programming_project_t2
                                 gameBoard[i, j].BackColor = Color.White;
                                 gameBoard[i, j - 1].BackColor = Color.White;
                                 movelock = false;
-                                /*
-                                if (gameBoard[3 , 7].BackColor == Color.Green && gameBoard[4 , 7].BackColor == Color.Green )
-                                {
-                                  MessageBox.Show("congrats!");
-                                }
-                                */
+
+                               
+
                             }
                         }
                     }
                 }
             }
 
+
             if (movelock == true)
             {
                 MessageBox.Show("invalid move. Please try again.");
+            }
+
+            if (gameBoard[2, 6].BackColor == Color.Green && gameBoard[3, 6].BackColor == Color.Green)
+            {
+                MessageBox.Show("Congrats");
             }
         }
 
@@ -204,6 +219,11 @@ namespace Programming_project_t2
             {
                 MessageBox.Show("Invalid move. Please try again.");
             }
+
+            if (gameBoard[2, 6].BackColor == Color.Green && gameBoard[3, 6].BackColor == Color.Green)
+            {
+                MessageBox.Show("Congrats");
+            }
         }
 
         private void movedown(object sender, EventArgs e, string color)
@@ -293,6 +313,11 @@ namespace Programming_project_t2
             {
                 MessageBox.Show("Invalid move. Please try again.");
             }
+
+            if (gameBoard[2, 6].BackColor == Color.Green && gameBoard[3, 6].BackColor == Color.Green)
+            {
+                MessageBox.Show("Congrats");
+            }
         }
 
         private void moveleft(object sender, EventArgs e, string color)
@@ -380,6 +405,11 @@ namespace Programming_project_t2
             {
                 MessageBox.Show("Invalid move. Please try again.");
             }
+
+            if (gameBoard[2, 6].BackColor == Color.Green && gameBoard[3, 6].BackColor == Color.Green)
+            {
+                MessageBox.Show("Congrats");
+            }
         }
 
         private void moveright(object sender, EventArgs e, string color)
@@ -413,6 +443,7 @@ namespace Programming_project_t2
         public void endgame(object sender, EventArgs e)
         {
             MessageBox.Show("Congratulations! you have completed the game :)");
+           
         }
     }
 }
