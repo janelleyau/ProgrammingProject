@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Globalization;
 
 namespace Programming_project_t2
 {
@@ -15,6 +16,7 @@ namespace Programming_project_t2
     {
         //This creates a two-dimensional array 
         PictureBox[,] gameBoard = new PictureBox[7, 7];
+
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +24,9 @@ namespace Programming_project_t2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //displays messagebox at the start that gives the user simple instructions on how to use the program. 
+            MessageBox.Show("Welcome! To start the game, select a colour from the box on the top left side of the screen and press the controls below to move the piece. :D");
+
             /* This line of code reads all the information from the csv file and stores each value into an array. Each new line represents a 
             new slot in the array and the code stops when there is a blank line. 
             e.g puzzleconfigarray[0] = white
@@ -91,7 +96,9 @@ namespace Programming_project_t2
             }
         }
 
-        //This is a function specifically made for the green block to move up. 
+        /* This is a function specifically made for the green block to move up. It is similar to the normal moveup subprogram except prevents the piece from accidently moving
+        in one side and not the other. 
+        */
         private void greenmoveup(object sender, EventArgs e, string color)
         {
             bool movelock = true;
@@ -111,8 +118,6 @@ namespace Programming_project_t2
                                 gameBoard[i, j - 1].BackColor = Color.White;
                                 movelock = false;
 
-                               
-
                             }
                         }
                     }
@@ -127,7 +132,7 @@ namespace Programming_project_t2
 
             if (gameBoard[2, 6].BackColor == Color.Green && gameBoard[3, 6].BackColor == Color.Green)
             {
-                MessageBox.Show("Congrats");
+                MessageBox.Show("Congratulations! You have completed the game :)");
             }
         }
 
@@ -222,7 +227,7 @@ namespace Programming_project_t2
 
             if (gameBoard[2, 6].BackColor == Color.Green && gameBoard[3, 6].BackColor == Color.Green)
             {
-                MessageBox.Show("Congrats");
+                MessageBox.Show("Congratulations! You have completed the game :)");
             }
         }
 
@@ -316,7 +321,7 @@ namespace Programming_project_t2
 
             if (gameBoard[2, 6].BackColor == Color.Green && gameBoard[3, 6].BackColor == Color.Green)
             {
-                MessageBox.Show("Congrats");
+                MessageBox.Show("Congratulations! You have completed the game :)");
             }
         }
 
@@ -408,7 +413,7 @@ namespace Programming_project_t2
 
             if (gameBoard[2, 6].BackColor == Color.Green && gameBoard[3, 6].BackColor == Color.Green)
             {
-                MessageBox.Show("Congrats");
+                MessageBox.Show("Congratulations! You have completed the game :)");
             }
         }
 
@@ -440,10 +445,5 @@ namespace Programming_project_t2
             }
         }
 
-        public void endgame(object sender, EventArgs e)
-        {
-            MessageBox.Show("Congratulations! you have completed the game :)");
-           
-        }
     }
 }
